@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   backend:
     build: .
@@ -8,22 +6,13 @@ services:
       - "3000:3000"
     volumes:
       - .:/usr/src/app
-      - /usr/src/app/node_modules
-    environment:
-      - NODE_ENV=development
-      - PORT=3000
-      - AWS_REGION=us-east-1
-      - DYNAMODB_ENDPOINT=http://dynamodb-local:8000
-      - MYSQL_HOST=mysql
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=my-secret-pw
-      - MYSQL_DATABASE=testdb
-      - NEO4J_URI=bolt://your-neo4j-saas-endpoint:7687
-      - NEO4J_USER=your-neo4j-username
-      - NEO4J_PASSWORD=your-neo4j-password
+    env_file:
+      - ./.env
     depends_on:
-      - dynamodb-local
-      - mysql
+      mysql:
+        condition: service_healthy
+      dynamodb-local:
+        condition: service_started
 
   dynamodb-local:
     image: amazon/dynamodb-local
@@ -42,6 +31,11 @@ services:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-pmy-secret-pw"]
+      interval: 20s
+      timeout: 10s
+      retries: 10
 
 volumes:
   mysql_data:

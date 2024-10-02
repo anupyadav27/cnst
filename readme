@@ -1,0 +1,87 @@
+this is file structrure and purpose of each file.. 
+backend/
+├── app.js
+├── package.json
+├── config/
+│   ├── awsConfig.js
+│   ├── dbConfig.js
+│   ├── cacheConfig.js
+│   └── dotenvConfig.js
+├── routes/
+│   ├── securityHubRoutes.js
+│   ├── inspectorRoutes.js
+│   ├── guardDutyRoutes.js
+│   ├── complianceRoutes.js
+│   ├── policiesRoutes.js
+│   ├── reportsRoutes.js
+│   └── settingsRoutes.js
+├── controllers/
+│   ├── securityHubController.js
+│   ├── inspectorController.js
+│   ├── guardDutyController.js
+│   ├── complianceController.js
+│   ├── policiesController.js
+│   ├── reportsController.js
+│   └── settingsController.js
+├── services/
+│   ├── securityHubService.js
+│   ├── inspectorService.js
+│   ├── guardDutyService.js
+│   ├── complianceService.js
+│   ├── policiesService.js
+│   ├── reportsService.js
+│   └── settingsService.js
+├── models/
+│   ├── securityScoreModel.js
+│   ├── vulnerabilityModel.js
+│   ├── threatModel.js
+│   ├── complianceModel.js
+│   ├── policyModel.js
+│   ├── reportModel.js
+│   └── userModel.js
+├── utils/
+│   ├── dataProcessor.js
+│   ├── errorHandler.js
+│   ├── logger.js
+│   ├── responseFormatter.js
+│   └── validation.js
+├── cache/
+│   └── cacheService.js
+├── middlewares/
+│   ├── authMiddleware.js
+│   ├── errorMiddleware.js
+│   └── validationMiddleware.js
+├── tests/
+│   ├── controllers/
+│   │   └── securityHubController.test.js
+│   ├── services/
+│   │   └── securityHubService.test.js
+│   └── utils/
+│       └── dataProcessor.test.js
+├── .env
+├── .gitignore
+└── README.md
+
+
+
+
+Explanation of Files and Directories:
+
+app.js: The main entry point of your application.
+package.json: Contains metadata about your project and dependencies.
+config/: Configuration files for AWS, database, cache, and environment variables.
+awsConfig.js: AWS SDK configuration.
+dbConfig.js: Database connection setup.
+cacheConfig.js: Cache (e.g., Redis) configuration.
+dotenvConfig.js: Loads environment variables from the .env file.
+routes/: Defines Express.js routes for different features.
+controllers/: Contains controller functions that handle HTTP requests.
+services/: Business logic and interactions with AWS services.
+models/: Database models (schemas) for data persistence.
+utils/: Utility functions and helpers.
+cache/: Cache service implementation.
+middlewares/: Custom middleware functions for authentication, error handling, validation, etc.
+tests/: Contains test files for various parts of your application.
+.env: Environment variables file (should be excluded from version control).
+.gitignore: Specifies files and directories to be ignored by Git.
+README.md: Documentation for your project.
